@@ -23,14 +23,13 @@ def get_google_api_connection():
    SHEET_NAME = 'ICICI_Datasheet'
    googlesheetdata = google_connection.open_by_key(SHEET_ID).worksheet(SHEET_NAME).get_all_values()
    header_row = googlesheetdata[0]
-   rest_of_rec = googlesheetdata.pop(0)
-   googlesheetrecords = google_connection.open_by_key(SHEET_ID).worksheet(SHEET_NAME).get_all_records()
+   #googlesheetrecords = google_connection.open_by_key(SHEET_ID).worksheet(SHEET_NAME).get_all_records()
    print(googlesheetdata)
-   data_frame = pd.DataFrame(rest_of_rec)#,columns=header_row)
+   data_frame = pd.DataFrame(googlesheetdata)
    print(data_frame)
-   data_frame.to_csv(data_directory,sep=",",index=False)
-   print(googlesheetrecords)
-   #print(googlesheetdata[0])
+   data_frame.to_csv(data_directory,sep=",",index=False,header=False)
+   #print(googlesheetrecords)
+   #print(googlesheetdata[0])'''
 
 
 
